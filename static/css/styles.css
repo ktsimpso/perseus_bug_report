@@ -1,0 +1,14 @@
+a {
+    padding: 10px;
+}
+
+.box {
+    height: 50px;
+    width: 100px;
+    background-color: red;
+    transition: transform 0.5s ease-in-out;
+}
+
+.box.right {
+    transform: translateX(100px);
+}

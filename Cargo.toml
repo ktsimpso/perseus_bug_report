@@ -1,0 +1,23 @@
+[package]
+name = "perseus_bug_repro"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+# Dependencies for the engine and the browser go here
+[dependencies]
+perseus = { version = "=0.4.0-beta.17", features = [ ] }
+sycamore = "^0.8.2"
+serde = { version = "1", features = [ "derive" ] }
+serde_json = "1"
+
+# Engine-only dependencies go here
+[target.'cfg(engine)'.dependencies]
+tokio = { version = "1", features = [ "macros", "rt", "rt-multi-thread" ] }
+perseus-axum = { package = "perseus-axum", version = "=0.4.0-beta.17", features = [ "dflt-server" ] }
+
+# Browser-only dependencies go here
+[target.'cfg(client)'.dependencies]
+wasm-bindgen = "0.2.84"
+web-sys = { version = "0.3.60", features = ["Event", "EventTarget", "HtmlSelectElement", "HtmlInputElement", "Window", "Document", "Element"] }
