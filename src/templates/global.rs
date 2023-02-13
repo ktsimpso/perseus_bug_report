@@ -1,6 +1,9 @@
 use perseus::{engine_only_fn, reactor::Reactor, state::GlobalStateCreator, ReactiveState};
 use serde::{Deserialize, Serialize};
-use sycamore::prelude::{view, Html, Scope, View};
+use sycamore::{
+    prelude::{view, Html, Scope, View},
+    rt::Event,
+};
 
 #[derive(Serialize, Deserialize, Clone, ReactiveState)]
 #[rx(alias = "PageStateRx")]
@@ -31,7 +34,12 @@ fn nav<G: Html>(cx: Scope) -> View<G> {
                             })
                             .into_iter()
                             .map(|element| element.unchecked_into::<HtmlInputElement>())
-                            .for_each(|element| element.set_checked(false))
+                            .for_each(|element| {
+                                element.set_checked(false);
+                                Event::new("change").iter().for_each(|event| {
+                                    element.dispatch_event(&event);
+                                });
+                            })
                     });
 
                     w.set_timeout_with_callback_and_timeout_and_arguments_0(
