@@ -1,1 +1,1 @@
-To see the bug in action run `perseus serve`. There are spans noting the expected behavoir.
+To see the bug in action run `perseus serve`. Then navigate directly to `http://localhost:8080/`

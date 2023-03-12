@@ -7,7 +7,7 @@ edition = "2021"
 
 # Dependencies for the engine and the browser go here
 [dependencies]
-perseus = { version = "=0.4.0-beta.17", features = [ ] }
+perseus = { version = "=0.4.0-beta.20", features = [ "translator-fluent" ] }
 sycamore = "^0.8.2"
 serde = { version = "1", features = [ "derive" ] }
 serde_json = "1"
@@ -15,7 +15,7 @@ serde_json = "1"
 # Engine-only dependencies go here
 [target.'cfg(engine)'.dependencies]
 tokio = { version = "1", features = [ "macros", "rt", "rt-multi-thread" ] }
-perseus-axum = { package = "perseus-axum", version = "=0.4.0-beta.17", features = [ "dflt-server" ] }
+perseus-axum = { package = "perseus-axum", version = "=0.4.0-beta.20", features = [ "dflt-server" ] }
 
 # Browser-only dependencies go here
 [target.'cfg(client)'.dependencies]

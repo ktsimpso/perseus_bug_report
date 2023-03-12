@@ -1,4 +1,6 @@
-use perseus::{engine_only_fn, reactor::Reactor, state::GlobalStateCreator, ReactiveState};
+use perseus::{
+    engine_only_fn, link, reactor::Reactor, state::GlobalStateCreator, t, ReactiveState,
+};
 use serde::{Deserialize, Serialize};
 use sycamore::{
     prelude::{view, Html, Scope, View},
@@ -60,12 +62,11 @@ fn nav<G: Html>(cx: Scope) -> View<G> {
 
     view! {cx,
         nav {
-            a (href = "") { "index" }
-            a (href = "/about") { "about" }
-            span { "Changing the page will uncheck the box after 100ms timeout. This in theory would allow the animation to play." }
+            a (href = link!(cx, "")) { "index" }
+            a (href = link!(cx, "about")) { "about" }
+            span { (t!(cx, "hello")) }
         }
         input (type = "checkbox", class = "checkbox", bind:checked=state.checkbox_state) {}
-        span { "The box should move when the checkbox is checked. Manual checking an unchecking works as expected." }
         div (class = derived_state) {}
     }
 }

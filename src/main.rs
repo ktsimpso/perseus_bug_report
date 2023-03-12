@@ -9,6 +9,7 @@ pub fn main<G: Html>() -> PerseusApp<G> {
         .template(crate::templates::index::get_template())
         .template(crate::templates::about::get_template())
         .global_state_creator(crate::templates::global::get_global_state_creator())
+        .locales_and_translations_manager("en-US", &["fr-FR"])
         .index_view(|cx| {
             view! {cx,
                 head {
@@ -18,9 +19,7 @@ pub fn main<G: Html>() -> PerseusApp<G> {
                 }
                 body {
                     div (id="root") {}
-                    button (class="toggle") { "Toggle checkbox with javascript" }
-                    span { "This button toggles the checkbox from a javascript function. This in theory should also play the animation of the box." }
-                    script (src = "/.perseus/static/js/toggle.js") {}
+                    span { "Load the local host root page (not the translated pages). To see the error message in the js console after it redirects you to the locale specific page. If you refresh on the translated pages things work as expected." }
                 }
             }
         })

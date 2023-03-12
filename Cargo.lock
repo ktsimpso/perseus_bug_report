@@ -279,6 +279,51 @@ dependencies = [
 ]
 
 [[package]]
+name = "displaydoc"
+version = "0.2.3"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "3bf95dc3f046b9da4f2d51833c0d3547d8564ef6910f5c1ed130306a75b92886"
+dependencies = [
+ "proc-macro2",
+ "quote",
+ "syn",
+]
+
+[[package]]
+name = "fluent-bundle"
+version = "0.15.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "e242c601dec9711505f6d5bbff5bedd4b61b2469f2e8bb8e57ee7c9747a87ffd"
+dependencies = [
+ "fluent-langneg",
+ "fluent-syntax",
+ "intl-memoizer",
+ "intl_pluralrules",
+ "rustc-hash",
+ "self_cell",
+ "smallvec",
+ "unic-langid",
+]
+
+[[package]]
+name = "fluent-langneg"
+version = "0.13.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "2c4ad0989667548f06ccd0e306ed56b61bd4d35458d54df5ec7587c0e8ed5e94"
+dependencies = [
+ "unic-langid",
+]
+
+[[package]]
+name = "fluent-syntax"
+version = "0.11.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "c0abed97648395c902868fee9026de96483933faa54ea3b40d652f7dfe61ca78"
+dependencies = [
+ "thiserror",
+]
+
+[[package]]
 name = "fmterr"
 version = "0.1.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -533,6 +578,25 @@ dependencies = [
 ]
 
 [[package]]
+name = "intl-memoizer"
+version = "0.5.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "c310433e4a310918d6ed9243542a6b83ec1183df95dff8f23f87bb88a264a66f"
+dependencies = [
+ "type-map",
+ "unic-langid",
+]
+
+[[package]]
+name = "intl_pluralrules"
+version = "7.0.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "078ea7b7c29a2b4df841a7f6ac8775ff6074020c6776d48491ce2268e068f972"
+dependencies = [
+ "unic-langid",
+]
+
+[[package]]
 name = "itoa"
 version = "1.0.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -717,17 +781,19 @@ checksum = "478c572c3d73181ff3c2539045f6eb99e5491218eae919370993b890cdbdd98e"
 
 [[package]]
 name = "perseus"
-version = "0.4.0-beta.17"
+version = "0.4.0-beta.20"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "2817b16ea5b6f96e823dcbbee06373dafdbe69822a1449fe3085456845e11c89"
+checksum = "c8eb87fa58098b1619371d907b1e49a90ff2db45e5bf5d68a2648cd6cddfb843"
 dependencies = [
  "async-trait",
  "chrono",
  "console_error_panic_hook",
+ "fluent-bundle",
  "fmterr",
  "fs_extra",
  "futures",
  "http",
+ "intl-memoizer",
  "js-sys",
  "minify-html-onepass",
  "perseus-macro",
@@ -740,6 +806,7 @@ dependencies = [
  "sycamore-router",
  "thiserror",
  "tokio",
+ "unic-langid",
  "urlencoding",
  "wasm-bindgen",
  "wasm-bindgen-futures",
@@ -748,9 +815,9 @@ dependencies = [
 
 [[package]]
 name = "perseus-axum"
-version = "0.4.0-beta.17"
+version = "0.4.0-beta.20"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "c95ef7b65023a10e53ebd6b13c0e7dac4b274ec710605a2925c6f3de65b6f5b1"
+checksum = "d4f5e7f6e8204cd7f4c0b175bdb562e7378e40e0641749e3987fc42b4ecbecb5"
 dependencies = [
  "axum",
  "perseus",
@@ -759,9 +826,9 @@ dependencies = [
 
 [[package]]
 name = "perseus-macro"
-version = "0.4.0-beta.17"
+version = "0.4.0-beta.22"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "72555f3c41e9ff2509c9c1ea0dddc405654ba16ac5cf720af28c14a5c65afc55"
+checksum = "f5620bc354c480258abe55f2bcdaa5569d584a5b76fb7a1dc4fb34a5d5bd9dcf"
 dependencies = [
  "darling",
  "proc-macro2",
@@ -852,11 +919,10 @@ checksum = "456c603be3e8d448b072f410900c09faf164fbce2d480456f50eea6e25f9c848"
 
 [[package]]
 name = "rexie"
-version = "0.2.1"
+version = "0.4.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "5ed2b22c65c32a8bd7cc1517fe02a8240839cba64e4cba7787e758f70f011b25"
+checksum = "fef172ff9cdf146cdc934e28cdeb137517bf954fb75e6ee8987dd44b58f351b1"
 dependencies = [
- "console_error_panic_hook",
  "js-sys",
  "num-traits",
  "thiserror",
@@ -897,6 +963,12 @@ name = "scratch"
 version = "1.0.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "ddccb15bcce173023b3fedd9436f882a0739b8dfb45e4f6b6002bee5929f61b2"
+
+[[package]]
+name = "self_cell"
+version = "0.10.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "1ef965a420fe14fdac7dd018862966a4c14094f900e1650bbc71ddd7d580c8af"
 
 [[package]]
 name = "semver"
@@ -1165,6 +1237,15 @@ dependencies = [
 ]
 
 [[package]]
+name = "tinystr"
+version = "0.7.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "7ac3f5b6856e931e15e07b478e98c8045239829a65f9156d4fa7e7788197a5ef"
+dependencies = [
+ "displaydoc",
+]
+
+[[package]]
 name = "tokio"
 version = "1.25.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1285,6 +1366,33 @@ name = "try-lock"
 version = "0.2.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "3528ecfd12c466c6f163363caf2d02a71161dd5e1cc6ae7b34207ea2d42d81ed"
+
+[[package]]
+name = "type-map"
+version = "0.4.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "b6d3364c5e96cb2ad1603037ab253ddd34d7fb72a58bdddf4b7350760fc69a46"
+dependencies = [
+ "rustc-hash",
+]
+
+[[package]]
+name = "unic-langid"
+version = "0.9.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "398f9ad7239db44fd0f80fe068d12ff22d78354080332a5077dc6f52f14dcf2f"
+dependencies = [
+ "unic-langid-impl",
+]
+
+[[package]]
+name = "unic-langid-impl"
+version = "0.9.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "e35bfd2f2b8796545b55d7d3fd3e89a0613f68a0d1c8bc28cb7ff96b411a35ff"
+dependencies = [
+ "tinystr",
+]
 
 [[package]]
 name = "unicase"
